@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Parking | App</title>
+    <!-- Custom styles for this template -->
+    <%= csrf_meta_tags %>
+    <%= yield :style %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <%= render partial: 'layouts/parking_header' %>
+    <%= yield %>
+    <%= render partial: 'layouts/parking_footer' %>
+    <%= yield :script %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </body>
+</html>
+
+

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vehicle_number: MyString
+  spot: one
+  is_active: false
+
+two:
+  vehicle_number: MyString
+  spot: two
+  is_active: false

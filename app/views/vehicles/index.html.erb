@@ -1,0 +1,61 @@
+<div class="content-wrapper">
+   <section class="content-header">
+      <div class="container-fluid">
+         <%= form_tag(vehicles_path, method: :get) do %>
+         <div class="col-sm-3">
+            <div class="has-srch">
+               <%= text_field_tag(:search_vehicle, params[:search_vehicle], placeholder: 'Place item and press enter', class: 'form-control', autocomplete: 'off')%>
+            </div>
+         </div>
+         <%end%>
+      </div>
+      <% flash.each do |type, msg| %>
+         <div class="alert alert-info">
+          <%= msg %>
+        </div>
+      <% end %>
+   </section>
+   <section class="content">
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-12">
+               <div class="card">
+                  <div class="card-header">
+                     <h3 class="card-title">Vehicle Parking</h3>
+                     <div class="card-tools">
+                        <%= link_to new_vehicle_path, :class => 'btn btn-info btn-xs' do %>
+                        <i class="fa fa-plus"></i> Create Parking
+                        <% end %>
+                     </div>
+                  </div>
+                  <%if @items.present?%>
+                  <div class="card-body table-responsive p-0">
+                     <table class="table table-hover text-nowrap">
+                        <thead>
+                           <tr>
+                              <th>ID</th>
+                              <th>Vehicle Number</th>
+                              <th>Parking Type</th>
+                              <th>Action</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <% @items.each do |f| %>
+                           <tr>
+                              <td><%= f.id%></td>
+                              <td><%= f.vehicle_number%></td>
+                              <td><%= f.spot.title%></td>
+                              <td><%= button_to 'Un Park', vehicle_path(f), method: :delete, :onclick => "return confirm('Are you sure you want to un park this vehicle?')" , :class   => 'btn btn-xs btn-danger'%></td>
+                           </tr>
+                           <% end %>
+                        </tbody>
+                     </table>
+                     <div class="pag_align pull-right"><%= will_paginate @items%></div>
+                  </div>
+                  <% end %>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</div>
